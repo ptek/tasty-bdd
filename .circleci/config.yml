@@ -42,3 +42,4 @@ workflows:
     jobs:
       - test-8.0.2
       - test-8.2.2
+      - test-nightly

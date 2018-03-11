@@ -28,6 +28,14 @@ jobs:
           paths:
             - /root/.stack
 
+  test-nightly:
+    docker:
+      - image: fpco/stack-build:latest
+    steps:
+      - checkout
+      - run: rm -f stack.yaml && stack init --resolver nightly --solver
+      - run: stack build --resolver nightly --haddock --test
+
 workflows:
   version: 2
   test:

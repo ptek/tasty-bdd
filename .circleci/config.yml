@@ -28,19 +28,9 @@ jobs:
           paths:
             - /root/.stack
 
-  test-nightly:
-    docker:
-      - image: fpco/stack-build:latest
-    steps:
-      - checkout
-      - run: stack upgrade && stack setup --resolver nightly --upgrade-cabal
-      - run: rm -f stack.yaml && stack init --resolver nightly --solver
-      - run: stack build --resolver nightly --haddock --test
-
 workflows:
   version: 2
   test:
     jobs:
       - test-8.0.2
       - test-8.2.2
-      - test-nightly
